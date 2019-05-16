@@ -1,0 +1,62 @@
+.responsive-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.border {
+    background-color: rgb(27, 26, 26);
+    color:white;
+    border-radius: 10px;
+    padding: 10px;    
+}
+.name {
+    color: rgb(90, 202, 90);
+    font-size: 3.5vh
+}
+::ng-deep .color-select .input-field .select-wrapper   {
+    color: white;
+}
+::ng-deep .color-select .input-field .select-wrapper span  {
+    color: white;   
+}
+::ng-deep .color-select .input-field .select-wrapper li span  {
+    background-color: rgb(98, 173, 98);
+    color: white;
+}
+::ng-deep .color-container .input-field
+{
+  color: white;
+}
+::ng-deep .color-container .input-field label
+{
+  color: white;
+}
+::ng-deep .color-container .input-field input:focus + label
+{
+  color: white;
+}
+::ng-deep .color-container .input-field input:focus
+{
+  border-bottom: 1px solid white;
+  box-shadow: 0 1px 0 0 grey;
+}
+::ng-deep .color-container .input-field input[type=text]:focus + label
+{
+  color: white;
+}
+::ng-deep .color-container .input-field input[type=text]:focus
+{
+  border-bottom: 1px solid white;
+  box-shadow: 0 1px 0 0 gray;
+}
+audio {
+    padding-left: 10px;
+    height: 25px;
+    margin-top: 10px;
+}
+.pointer{
+ cursor: pointer;
+}
+i:hover{
+  color:rgb(148, 201, 148)!important;
+}
+

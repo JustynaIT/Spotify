@@ -1,0 +1,37 @@
+<div class="container">
+  <div  class="row" *ngIf="ListNewReleases"><br>
+    <div class="col  s12 m6 l4 xl3" *ngFor="let item of ListNewReleases" >
+      <mz-card class=" blue-grey lighten-5  black-text" 
+        [horizontal]="false" 
+        [hoverable]="true">
+        <mz-card-image>
+          <img [src]=img(item.images) />          
+        </mz-card-image>
+        <mz-card-title class="truncate">
+            <div class="icon">            
+                <a [href] = "item.external_urls.spotify" 
+                  mz-tooltip
+                    [tooltip]="'Play in spotify'"
+                    [position]="'top'"
+                    [html]="true"
+                    [delay]="300">
+                  <i mz-icon class="black-text"
+                    [align]="'left'"
+                    [icon]="'library_music'"
+                    [size]="'small'">
+                  </i>
+                </a>                
+              </div>          
+              <p mz-tooltip
+                [tooltip]="item.name"
+                [position]="'top'"
+                [html]="true"
+                [delay]="500">{{item.name}}</p>
+        </mz-card-title>
+        <mz-card-content (click)=viewArtista(item) class="truncate" >
+          <span class="pointer" *ngFor="let artista of item.artists">{{artista.name}} </span>
+        </mz-card-content>
+      </mz-card>
+    </div>
+  </div>
+</div>

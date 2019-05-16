@@ -1,0 +1,53 @@
+.header {
+    padding: 30px;
+}
+.header h1 {
+    color: rgb(93, 189, 93);
+}
+.border {
+    background-color: rgb(27, 26, 26);
+    padding: 15px;
+    border-radius: 10px;
+    color:white;
+}
+.name {
+    font-size: 24px;
+    padding-left: 5px;
+    margin: 5px;
+    margin-bottom: 10px;
+}
+.genre {
+    color:white;
+    font-size: 16px;
+}
+.margin {
+    padding-left: 20px;
+}
+.fixed {
+    text-align: center;
+    position: fixed;
+   background-color: rgb(27, 26, 26);
+    top: 94%;
+    
+    margin-top: -2.5em;
+}
+iframe {
+    width: 73%;
+}
+audio {
+    height: 25px;
+    width: 40vh;
+}
+.button {
+    font-size: 12px;
+    padding: 0px 10px;
+    margin-left: 13px;
+    z-index: auto;
+}
+.pointer{
+    cursor: pointer;
+}
+i:hover{
+    color:rgb(148, 201, 148)!important;
+}
+

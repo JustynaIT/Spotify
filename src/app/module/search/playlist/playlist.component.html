@@ -1,0 +1,47 @@
+<div class="container">
+  <ng-template [ngIf]="playlists !== undefined">
+    <div class="row ">
+      <div class="col s4 header">
+        <img class=" circle responsive-img" [src]='cos(playlists.images)'>
+      </div>
+      <div class="col s8 header">
+        <h1>{{playlists.name}}</h1>
+        <div class="genre">
+          <strong>Owner:</strong>
+          {{playlists.owner.display_name}}
+        </div>
+        <br>
+        <a [href]="playlists.external_urls.spotify"><button mz-button class="green"> play in spotify </button> </a>
+      </div>
+      <div class="col s12" *ngFor="let trackk of playlists.tracks.items; let i = index ">
+        <div class="row border">
+          <div class="col s12">
+            <p class="name">
+             <ng-template [ngIf] = "idUsers === idNew">
+                <a class="pointer" (click)="removeTrack(playlists.id, trackk.track.uri)"> 
+                    <i mz-icon class="white-text"
+                    [align]="'left'"
+                    [icon]="'close'"
+                    [size]="'small'"
+                    mz-tooltip
+                      [tooltip]="'Remove track from playlist'"
+                      [position]="'top'"
+                      [html]="true"
+                      [delay]="300">
+                  </i> </a>
+            </ng-template> 
+            {{trackk.track.album.name}} - {{trackk.track.name}}</p>
+          </div>
+          <div class="col s12">
+            <ng-template [ngIf]=" trackk.track.preview_url !== null">
+              <audio controls>
+                <source [src]="trackk.track.preview_url" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

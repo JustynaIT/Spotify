@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12 header">
+        <h1>
+          Playlists 
+          <button mz-button class="green" (click)="openServiceModal()"> Add playlist </button>
+        </h1>
+    </div>
+    
+    <div  class=" col s12 m6 l4 xl3" *ngFor = "let playlist of playlists ">
+    <mz-card class=" blue-grey lighten-5  black-text" 
+      [horizontal]="false" 
+      [hoverable]="true" >
+      <mz-card-image [routerLink]="['/playlist',playlist.id]" >
+        <img class="responsive-img pointer" [src]='img(playlist.images)'>
+      </mz-card-image>
+      <mz-card-title >
+          {{playlist.name}}
+          <a class="pointer" (click)="delete(playlist.id)"> 
+            <i mz-icon
+              class="black-text"
+              [align]="'right'"
+              [icon]="'close'"
+              [size]="'small'"
+              mz-tooltip
+                [tooltip]="'Remove playlist'"
+                [position]="'top'"
+                [html]="true"
+                [delay]="300">
+            </i> 
+          </a>          
+      </mz-card-title >
+    </mz-card>
+  </div>  
+  </div>
+</div>

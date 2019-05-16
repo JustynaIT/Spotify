@@ -1,0 +1,29 @@
+.header {
+    padding: 30px;
+}
+.header h1 {
+    color: rgb(93, 189, 93);
+}
+.border {
+    background-color: rgb(27, 26, 26);
+    padding: 15px;
+    border-radius: 10px;
+    color:white;
+}
+.name {
+    font-size: 18px;
+}
+.genre {
+    color:white;
+    font-size: 16px;
+}
+audio {
+    padding-left: 10px;
+    height: 25px;
+}
+.pointer {
+    cursor: pointer;
+}
+i:hover{
+    color:rgb(148, 201, 148)!important;
+}

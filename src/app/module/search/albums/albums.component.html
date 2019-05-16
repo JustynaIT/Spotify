@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row ">
+    <div class="col s10 m6 l4 header offset-s1">
+      <img class=" circle responsive-img" [src]='cos(artista.images)'>
+    </div>
+    <div class="col s10 m6 l8 header offset-s1">
+      <h1>{{artista.name}}</h1>
+
+      <div class = "genre">
+        <strong>Genre:</strong>
+        <span *ngFor="let genre of artista.genres">
+          {{genre}},
+        </span>
+      </div>
+      <ng-template [ngIf] = "artista.external_urls!== undefined">
+        <br><a [href]="artista.external_urls['spotify']"><button mz-button class="green" > See on spotify </button> </a>
+      </ng-template> 
+    </div>
+
+    <div class="col l12"  *ngFor="let album of albums; let i = index ">
+       <div class="row border">
+          
+        <div class="col s12 m3 l2 playIcon pointer" (click)="play(album.id)">
+            <img class=" responsive-img" [src]='cos(album.images)'>                    
+        </div>
+        <div class="col s12  m9 l10" >
+          <p class= "name">{{album.name}} </p>
+          <button mz-button class="green button " (click)="hidden(i)">show tracks </button>
+          
+       </div>
+        <ng-template [ngIf]="show[i] === true">
+        <div   class="margin col s12 ">
+         <div  *ngFor = "let track of ListTracks[i], let n=index">
+          <p>{{track.name}}
+              
+              <a [href] = "track.external_urls.spotify" mz-tooltip
+                [tooltip]="'Play in spotify'"
+                [position]="'top'"
+                [html]="true"
+                [delay]="300">
+                  <i mz-icon class="white-text"
+                  [align]="'left'"
+                  [icon]="'library_music'"
+                  [size]="'small'">
+                </i>
+              </a>
+              <a class="pointer"  (click)="openServiceModal(track.uri)"
+                mz-tooltip
+                [tooltip]="'Add track to playlist'"
+                [position]="'top'"
+                [html]="true"
+                [delay]="300">
+                <i mz-icon class="white-text"
+                  [align]="'left'"
+                  [icon]="'playlist_add'"
+                  [size]="'small'">
+                </i>
+              </a>
+          </p>
+          <ng-template [ngIf] = "track.preview_url !== null">
+            <audio controls>
+              <source [src]="track.preview_url" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </ng-template>
+          
+        </div>  
+      </div>
+      </ng-template> 
+     </div>        
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf ="isClicked === true">
+  <div class="fixed col s12">
+    <iframe [src]="url2()"  frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <i  mz-icon class="white-text" (click)="close()"
+      [align]="'right'"
+      [icon]="'close'"
+      [size]="'small'">
+    </i>
+  </div>
+</div>

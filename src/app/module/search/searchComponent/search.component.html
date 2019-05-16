@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row"><br>
+    <div class="col s12 m8">
+      <mz-input-container class="color-container">       
+        <input mz-input
+          autocomplete="off"
+          [label]="'Search'"          
+          id="input"
+          type="text"
+          [(ngModel)]="searchStr" (keyup)="search()">
+      </mz-input-container>
+    </div>
+    <div class="col s12 m4">
+      <mz-select-container class="color-select">
+        <select mz-select (change)="selectChanged($event)"
+          id="options-select">
+          <option>Artist</option>
+          <option>Track</option>
+          <option>Playlist</option>   
+        </select>
+      </mz-select-container>
+    </div>
+  </div>  
+  <div *ngFor="let ress of searchRes">
+    <div class="row border">
+      <div class="col s4 m3 l2">
+          <img class=" responsive-img" [src]="img(ress.images)" />
+      </div>
+      <div class="col s8 m9 l10">
+        <div class="search-res ">
+          <h4 class="name pointer"(click)=viewArtista(ress)>{{ress.name}}</h4>
+          <div *ngIf = "ress.genres.length > 0">
+            <strong>Genres:</strong>
+            <span *ngFor="let genre of ress.genres"> {{genre}}, </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let ress of searchResT">
+      <div class="row border">
+        <div class="col s4 m3 l2">
+            <img class=" responsive-img" [src]="img(ress.album.images)" />
+        </div>
+         <div class="col s8 m9 l10">
+          <div class="search-res ">
+              <a class="pointer"  (click)="openServiceModal(ress.uri)"
+              mz-tooltip
+              [tooltip]="'Add track to playlist'"
+              [position]="'top'"
+              [html]="true"
+              [delay]="300">
+              <i mz-icon class="white-text"
+                [align]="'left'"
+                [icon]="'playlist_add'"
+                [size]="'small'">
+              </i>
+            </a>
+            <h4 class="name pointer"(click)=viewArtista(ress)>{{ress.name}}</h4>
+            <div *ngIf = "ress.artists.length > 0">
+              <strong>Artists:</strong>
+              <span *ngFor="let artist of ress.artists"> {{artist.name}}, </span>
+            </div>
+            <ng-template  [ngIf]="ress.preview_url !== null">
+                <audio controls class="hide-on-small-only">
+                  <source [src]="ress.preview_url" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </ng-template>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <div *ngFor="let ress of searchResP">
+      <div class="row border pointer" (click)=viewPlaylist(ress.id)>
+        <div class="col s4 m3 l2" >
+            <img class=" responsive-img" [src]="img(ress.images)" />
+        </div>
+        <div class="col s8 m9 l10">
+          <div class="search-res ">
+            <h4 class="name">{{ress.name}}</h4>
+              <strong>Owner:</strong>
+                 {{ress.owner.display_name}}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

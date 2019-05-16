@@ -1,0 +1,18 @@
+<mz-modal [fixedFooter]="false">
+    <mz-modal-header>
+      <h4>Create a Playlist</h4><br>
+    </mz-modal-header>
+    <mz-modal-content>
+      <mz-input-container >       
+        <input mz-input
+          autocomplete="off"
+          [label]="'Name playlist'"              
+          id="input"
+          type="text" 
+          [(ngModel)]="name">
+        </mz-input-container>    
+      </mz-modal-content>
+    <mz-modal-footer>
+      <button mz-button (click) = "submit()" class="green lighten-1 white-text" [flat]="true" mz-modal-close>Add</button>
+    </mz-modal-footer>
+</mz-modal>

@@ -1,0 +1,25 @@
+<mz-modal [fixedFooter]="true">
+  <mz-modal-header>
+    <h4>Add to a Playlist</h4><br>
+  </mz-modal-header>
+  <mz-modal-content>
+    <div class="row">
+    <a mz-button style=" height:210px;" 
+      class="col s12 m6 l4 xl3" 
+      *ngFor = "let playlist of playlists " 
+      (click)="addTrack(playlist.id)" 
+      [flat]="true" 
+      mz-modal-close>
+      <div class="col s12">
+        <img class="responsive-img" [src]='img(playlist.images)'>
+      </div>
+      <div class="col s12 name">
+          {{playlist.name}}
+      </div>
+    </a>
+  </div>
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button class="green lighten-1 white-text" [flat]="true" mz-modal-close>close</button>
+  </mz-modal-footer>
+</mz-modal>

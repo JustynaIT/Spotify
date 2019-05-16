@@ -1,0 +1,23 @@
+.header {
+    padding: 30px;
+}
+.header h1 {
+    color: rgb(93, 189, 93);
+    text-align: center;
+}
+.name {
+    text-align: center;
+    color: white;
+    font-size: 4vh;
+}
+.bg{
+    background-color: rgb(17, 18, 19);
+    
+}
+.pointer {
+    cursor: pointer;
+}
+
+i:hover{
+    color:rgb(148, 201, 148)!important;
+}
