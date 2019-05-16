@@ -11,6 +11,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 
 import { SearchService } from './search.service';
 import { ModalPlaylistComponent } from './modal-playlist/modal-playlist.component';
+import {PlayerComponent} from "../../components/shared/player/player.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ModalPlaylistComponent } from './modal-playlist/modal-playlist.componen
     ArtistaComponent,
     AlbumsComponent,
     PlaylistComponent,
-    ModalPlaylistComponent
+    ModalPlaylistComponent,
+    PlayerComponent
   ],
   imports: [
     CommonModule,

@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row"><br>
     <div class="col s12 m8">
-      <mz-input-container class="color-container">       
+      <mz-input-container class="color-container">
         <input mz-input
           autocomplete="off"
-          [label]="'Search'"          
+          [label]="'Search'"
           id="input"
           type="text"
           [(ngModel)]="searchStr" (keyup)="search()">
@@ -16,11 +16,11 @@
           id="options-select">
           <option>Artist</option>
           <option>Track</option>
-          <option>Playlist</option>   
+          <option>Playlist</option>
         </select>
       </mz-select-container>
     </div>
-  </div>  
+  </div>
   <div *ngFor="let ress of searchRes">
     <div class="row border">
       <div class="col s4 m3 l2">
@@ -61,14 +61,9 @@
               <strong>Artists:</strong>
               <span *ngFor="let artist of ress.artists"> {{artist.name}}, </span>
             </div>
-            <ng-template  [ngIf]="ress.preview_url !== null">
-                <audio controls class="hide-on-small-only">
-                  <source [src]="ress.preview_url" type="audio/mpeg">
-                  Your browser does not support the audio element.
-                </audio>
-              </ng-template>
+            <app-player [track]="ress"></app-player>
           </div>
-        </div> 
+        </div>
       </div>
     </div>
     <div *ngFor="let ress of searchResP">

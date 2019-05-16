@@ -21,9 +21,9 @@
         </div>
         <div class="col s12 m9 l10">
           <p class= "name">
-            
-            {{track.album.name}} - {{track.name}} 
-            </p> 
+
+            {{track.album.name}} - {{track.name}}
+            </p>
             <a [href] = "track.external_urls.spotify" mz-tooltip
                 [tooltip]="'Play in spotify'"
                 [position]="'top'"
@@ -48,10 +48,7 @@
                 </i>
               </a>
           </div>
-          <audio controls>
-            <source [src]="track.preview_url" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
+        <app-player [track]="track"></app-player>
       </div>
     </div>
   </div>
