@@ -14,25 +14,25 @@
       </div>
       <ng-template [ngIf] = "artista.external_urls!== undefined">
         <br><a [href]="artista.external_urls['spotify']"><button mz-button class="green" > See on spotify </button> </a>
-      </ng-template> 
+      </ng-template>
     </div>
 
     <div class="col l12"  *ngFor="let album of albums; let i = index ">
        <div class="row border">
-          
+
         <div class="col s12 m3 l2 playIcon pointer" (click)="play(album.id)">
-            <img class=" responsive-img" [src]='cos(album.images)'>                    
+            <img class=" responsive-img" [src]='cos(album.images)'>
         </div>
         <div class="col s12  m9 l10" >
           <p class= "name">{{album.name}} </p>
           <button mz-button class="green button " (click)="hidden(i)">show tracks </button>
-          
+
        </div>
         <ng-template [ngIf]="show[i] === true">
         <div   class="margin col s12 ">
          <div  *ngFor = "let track of ListTracks[i], let n=index">
           <p>{{track.name}}
-              
+
               <a [href] = "track.external_urls.spotify" mz-tooltip
                 [tooltip]="'Play in spotify'"
                 [position]="'top'"
@@ -56,18 +56,12 @@
                   [size]="'small'">
                 </i>
               </a>
+              <app-player [track]="track"></app-player>
           </p>
-          <ng-template [ngIf] = "track.preview_url !== null">
-            <audio controls>
-              <source [src]="track.preview_url" type="audio/mpeg">
-              Your browser does not support the audio element.
-            </audio>
-          </ng-template>
-          
-        </div>  
+        </div>
       </div>
-      </ng-template> 
-     </div>        
+      </ng-template>
+     </div>
     </div>
   </div>
 </div>

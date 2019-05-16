@@ -17,6 +17,8 @@ export class SearchComponent implements OnInit {
   searchResT: any[];
   searchResP: any[];
   selected = 'Artist';
+  private timer: any;
+  private readonly debounceTime = 300;
 
   constructor(private searchS: SearchService, private router: Router,
               private modalService: MzModalService) { }
@@ -25,26 +27,33 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    if (this.searchStr !== '' && this.searchStr !== undefined && this.selected === 'Artist') {
-      this.searchS.searchArtist(this.searchStr)
-      .subscribe(res => {
-        this.searchRes = res;
-      });
-    } else if (this.searchStr !== '' && this.searchStr !== undefined && this.selected === 'Track') {
-      this.searchS.searchTrack(this.searchStr)
-      .subscribe(res => {
-        this.searchResT = res;
-      });
-    } else if (this.searchStr !== '' && this.searchStr !== undefined && this.selected === 'Playlist') {
-      this.searchS.searchPlaylists(this.searchStr)
-      .subscribe(res => {
-        this.searchResP = res;
-      });
-    } else {
-      this.searchRes = null;
-      this.searchResT = null;
-      this.searchResP = null;
+    if (this.timer) {
+      clearTimeout(this.timer);
     }
+    this.timer = setTimeout(() => {
+      if (this.searchStr !== '' && this.searchStr !== undefined && this.selected === 'Artist') {
+        this.searchS.searchArtist(this.searchStr)
+        .subscribe(res => {
+          this.searchRes = res;
+        });
+      } else if (this.searchStr !== '' && this.searchStr !== undefined && this.selected === 'Track') {
+        this.searchS.searchTrack(this.searchStr)
+        .subscribe(res => {
+          this.searchResT = res;
+        });
+      } else if (this.searchStr !== '' && this.searchStr !== undefined && this.selected === 'Playlist') {
+        this.searchS.searchPlaylists(this.searchStr)
+        .subscribe(res => {
+          this.searchResP = res;
+        });
+      } else {
+        this.searchRes = null;
+        this.searchResT = null;
+        this.searchResP = null;
+      }
+    }, this.debounceTime);
+
+    console.log(this.timer);
   }
 
   viewArtista(item: any) {

@@ -18,7 +18,7 @@
           <div class="col s12">
             <p class="name">
              <ng-template [ngIf] = "idUsers === idNew">
-                <a class="pointer" (click)="removeTrack(playlists.id, trackk.track.uri)"> 
+                <a class="pointer" (click)="removeTrack(playlists.id, trackk.track.uri)">
                     <i mz-icon class="white-text"
                     [align]="'left'"
                     [icon]="'close'"
@@ -29,16 +29,11 @@
                       [html]="true"
                       [delay]="300">
                   </i> </a>
-            </ng-template> 
+            </ng-template>
             {{trackk.track.album.name}} - {{trackk.track.name}}</p>
           </div>
           <div class="col s12">
-            <ng-template [ngIf]=" trackk.track.preview_url !== null">
-              <audio controls>
-                <source [src]="trackk.track.preview_url" type="audio/mpeg">
-                Your browser does not support the audio element.
-              </audio>
-            </ng-template>
+            <app-player [track]="trackk.track"></app-player>
           </div>
         </div>
       </div>
