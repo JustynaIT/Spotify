@@ -1,0 +1,15 @@
+<button mz-button
+        mz-tooltip
+        [tooltip]="playing ? 'Pause' : 'Play'"
+        [position]="'top'"
+        [flat]="true"
+        [float]="true"
+        (click)="toggle()"
+        [disabled]="!loaded">
+    <i class="white-text"
+       [align]="left"
+       [icon]="playing ? 'pause_circle_outline' : 'play_circle_outline'"
+       mz-icon ></i>
+  <span *ngIf="playing">PAUSE</span>
+</button>
+<small>{{ time }} / {{ duration }}</small>
